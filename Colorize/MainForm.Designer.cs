@@ -175,6 +175,7 @@
             this.btnFileChoose.TabIndex = 1;
             this.btnFileChoose.Text = "Выбрать изображение";
             this.btnFileChoose.UseVisualStyleBackColor = false;
+            this.btnFileChoose.Click += new System.EventHandler(this.btnFileChoose_Click);
             // 
             // btnAlgoStart
             // 
