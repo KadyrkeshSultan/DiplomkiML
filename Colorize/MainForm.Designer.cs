@@ -32,7 +32,7 @@
             this.lblHeaderText = new System.Windows.Forms.Label();
             this.txtConsoleOutput = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblAlgorithmName = new System.Windows.Forms.Label();
+            this.lblTestImage1 = new System.Windows.Forms.Label();
             this.lblAlgorithm = new System.Windows.Forms.Label();
             this.gridAlgorithm = new System.Windows.Forms.TableLayoutPanel();
             this.lblAlgoDesc = new System.Windows.Forms.Label();
@@ -40,6 +40,8 @@
             this.btnAlgoStart = new System.Windows.Forms.Button();
             this.pctBoxStart = new System.Windows.Forms.PictureBox();
             this.pctBoxEnd = new System.Windows.Forms.PictureBox();
+            this.btnSaveFile = new System.Windows.Forms.Button();
+            this.lblTestImage2 = new System.Windows.Forms.Label();
             this.gridMain.SuspendLayout();
             this.panel1.SuspendLayout();
             this.gridAlgorithm.SuspendLayout();
@@ -94,7 +96,8 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.lblAlgorithmName);
+            this.panel1.Controls.Add(this.lblTestImage2);
+            this.panel1.Controls.Add(this.lblTestImage1);
             this.panel1.Controls.Add(this.lblAlgorithm);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 83);
@@ -102,18 +105,18 @@
             this.panel1.Size = new System.Drawing.Size(194, 286);
             this.panel1.TabIndex = 3;
             // 
-            // lblAlgorithmName
+            // lblTestImage1
             // 
-            this.lblAlgorithmName.AutoSize = true;
-            this.lblAlgorithmName.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblAlgorithmName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblAlgorithmName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAlgorithmName.Location = new System.Drawing.Point(0, 21);
-            this.lblAlgorithmName.Name = "lblAlgorithmName";
-            this.lblAlgorithmName.Size = new System.Drawing.Size(72, 17);
-            this.lblAlgorithmName.TabIndex = 3;
-            this.lblAlgorithmName.Text = "Нейросеть";
-            this.lblAlgorithmName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTestImage1.AutoSize = true;
+            this.lblTestImage1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblTestImage1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTestImage1.Location = new System.Drawing.Point(9, 23);
+            this.lblTestImage1.Name = "lblTestImage1";
+            this.lblTestImage1.Size = new System.Drawing.Size(103, 17);
+            this.lblTestImage1.TabIndex = 3;
+            this.lblTestImage1.Text = "Изображение 1";
+            this.lblTestImage1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTestImage1.Click += new System.EventHandler(this.lblTestImage1_Click);
             // 
             // lblAlgorithm
             // 
@@ -122,15 +125,16 @@
             this.lblAlgorithm.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblAlgorithm.Location = new System.Drawing.Point(0, 0);
             this.lblAlgorithm.Name = "lblAlgorithm";
-            this.lblAlgorithm.Size = new System.Drawing.Size(154, 21);
+            this.lblAlgorithm.Size = new System.Drawing.Size(173, 21);
             this.lblAlgorithm.TabIndex = 2;
-            this.lblAlgorithm.Text = "Выберите алгоритм:";
+            this.lblAlgorithm.Text = "Примеры фотографий:";
             // 
             // gridAlgorithm
             // 
             this.gridAlgorithm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridAlgorithm.BackColor = System.Drawing.Color.White;
             this.gridAlgorithm.ColumnCount = 3;
             this.gridAlgorithm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42F));
             this.gridAlgorithm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14F));
@@ -140,6 +144,7 @@
             this.gridAlgorithm.Controls.Add(this.btnAlgoStart, 1, 1);
             this.gridAlgorithm.Controls.Add(this.pctBoxStart, 0, 2);
             this.gridAlgorithm.Controls.Add(this.pctBoxEnd, 2, 2);
+            this.gridAlgorithm.Controls.Add(this.btnSaveFile, 2, 1);
             this.gridAlgorithm.Location = new System.Drawing.Point(203, 83);
             this.gridAlgorithm.Name = "gridAlgorithm";
             this.gridAlgorithm.RowCount = 3;
@@ -159,19 +164,18 @@
             this.lblAlgoDesc.Name = "lblAlgoDesc";
             this.lblAlgoDesc.Size = new System.Drawing.Size(588, 40);
             this.lblAlgoDesc.TabIndex = 0;
-            this.lblAlgoDesc.Text = "Выберите изображние и нажмите \"Обработать\"";
+            this.lblAlgoDesc.Text = "Выберите изображение и нажмите \"Обработать\". Чем больше изображение, тем дольше о" +
+    "бработка изображения.";
             // 
             // btnFileChoose
             // 
-            this.btnFileChoose.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFileChoose.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnFileChoose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
             this.btnFileChoose.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnFileChoose.ForeColor = System.Drawing.Color.White;
-            this.btnFileChoose.Location = new System.Drawing.Point(3, 43);
+            this.btnFileChoose.Location = new System.Drawing.Point(35, 43);
             this.btnFileChoose.Name = "btnFileChoose";
-            this.btnFileChoose.Size = new System.Drawing.Size(243, 34);
+            this.btnFileChoose.Size = new System.Drawing.Size(179, 34);
             this.btnFileChoose.TabIndex = 1;
             this.btnFileChoose.Text = "Выбрать изображение";
             this.btnFileChoose.UseVisualStyleBackColor = false;
@@ -191,6 +195,7 @@
             this.btnAlgoStart.TabIndex = 2;
             this.btnAlgoStart.Text = "Обработать";
             this.btnAlgoStart.UseVisualStyleBackColor = false;
+            this.btnAlgoStart.Click += new System.EventHandler(this.btnAlgoStart_Click);
             // 
             // pctBoxStart
             // 
@@ -209,6 +214,33 @@
             this.pctBoxEnd.Size = new System.Drawing.Size(256, 200);
             this.pctBoxEnd.TabIndex = 4;
             this.pctBoxEnd.TabStop = false;
+            // 
+            // btnSaveFile
+            // 
+            this.btnSaveFile.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSaveFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
+            this.btnSaveFile.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnSaveFile.ForeColor = System.Drawing.Color.White;
+            this.btnSaveFile.Location = new System.Drawing.Point(385, 43);
+            this.btnSaveFile.Name = "btnSaveFile";
+            this.btnSaveFile.Size = new System.Drawing.Size(156, 34);
+            this.btnSaveFile.TabIndex = 5;
+            this.btnSaveFile.Text = "Сохранить";
+            this.btnSaveFile.UseVisualStyleBackColor = false;
+            this.btnSaveFile.Click += new System.EventHandler(this.btnSaveFile_Click);
+            // 
+            // lblTestImage2
+            // 
+            this.lblTestImage2.AutoSize = true;
+            this.lblTestImage2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblTestImage2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTestImage2.Location = new System.Drawing.Point(9, 43);
+            this.lblTestImage2.Name = "lblTestImage2";
+            this.lblTestImage2.Size = new System.Drawing.Size(103, 17);
+            this.lblTestImage2.TabIndex = 4;
+            this.lblTestImage2.Text = "Изображение 2";
+            this.lblTestImage2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTestImage2.Click += new System.EventHandler(this.lblTestImage2_Click);
             // 
             // MainForm
             // 
@@ -238,13 +270,15 @@
         private System.Windows.Forms.TextBox txtConsoleOutput;
         private System.Windows.Forms.Label lblAlgorithm;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lblAlgorithmName;
+        private System.Windows.Forms.Label lblTestImage1;
         private System.Windows.Forms.TableLayoutPanel gridAlgorithm;
         private System.Windows.Forms.Label lblAlgoDesc;
         private System.Windows.Forms.Button btnFileChoose;
         private System.Windows.Forms.Button btnAlgoStart;
         private System.Windows.Forms.PictureBox pctBoxStart;
         private System.Windows.Forms.PictureBox pctBoxEnd;
+        private System.Windows.Forms.Button btnSaveFile;
+        private System.Windows.Forms.Label lblTestImage2;
     }
 }
 
