@@ -45,20 +45,22 @@ namespace Colorize
 
         private void btnFileChoose_Click(object sender, EventArgs e)
         {
-            _flagTest = false;
             if(_openFileDialog.ShowDialog() == DialogResult.Cancel)
             {
                 return;
             }
 
+            _flagTest = false;
             _filePath = _openFileDialog.FileName;
             _fileName = new FileInfo(_filePath).Name;
 
             this.pctBoxStart.Image = Image.FromFile(_filePath);
+            Logging($"Выбран файл: {_filePath}");
         }
 
         private void BwRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            Logging("Обработка изображения завершена");
             _progressForm.Close();
         }
 
@@ -123,9 +125,11 @@ namespace Colorize
             }
             if (!_bw.IsBusy)
             {
+                Logging("Начат процесс обработки изображения");
                 _progressForm = new ProgressBarForm();
                 _progressForm.Show(this);
                 _bw.RunWorkerAsync();
+                Logging("Обработка изображения...");
             }
         }
 
@@ -158,9 +162,11 @@ namespace Colorize
             {
                 string fileName = _saveFileDialog.FileName;
                 System.IO.File.WriteAllBytes(fileName, ImageToByteArray(_resultImage));
+                Logging($"Изображение сохранено по пути: {fileName}");
             }
             catch(Exception err)
             {
+                Logging($"Ошибка: {err.Message}");
                 MessageBox.Show(err.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
@@ -170,6 +176,7 @@ namespace Colorize
             _filePath = _testImages[0];
             this.pctBoxStart.Load(_filePath);
             _flagTest = true;
+            Logging("Выбрано изображение 1");
         }
 
         private void lblTestImage2_Click(object sender, EventArgs e)
@@ -177,6 +184,12 @@ namespace Colorize
             _filePath = _testImages[1];
             this.pctBoxStart.Load(_filePath);
             _flagTest = true;
+            Logging("Выбрано изображение 2");
+        }
+
+        private void Logging(string message)
+        {
+            this.txtConsoleOutput.AppendText($"[{DateTime.Now.ToString()}]: {message}\r\n");
         }
     }
 }

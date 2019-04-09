@@ -32,6 +32,7 @@
             this.lblHeaderText = new System.Windows.Forms.Label();
             this.txtConsoleOutput = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTestImage2 = new System.Windows.Forms.Label();
             this.lblTestImage1 = new System.Windows.Forms.Label();
             this.lblAlgorithm = new System.Windows.Forms.Label();
             this.gridAlgorithm = new System.Windows.Forms.TableLayoutPanel();
@@ -41,7 +42,6 @@
             this.pctBoxStart = new System.Windows.Forms.PictureBox();
             this.pctBoxEnd = new System.Windows.Forms.PictureBox();
             this.btnSaveFile = new System.Windows.Forms.Button();
-            this.lblTestImage2 = new System.Windows.Forms.Label();
             this.gridMain.SuspendLayout();
             this.panel1.SuspendLayout();
             this.gridAlgorithm.SuspendLayout();
@@ -88,6 +88,7 @@
             // 
             this.txtConsoleOutput.BackColor = System.Drawing.Color.LightGray;
             this.txtConsoleOutput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtConsoleOutput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txtConsoleOutput.Location = new System.Drawing.Point(203, 375);
             this.txtConsoleOutput.Multiline = true;
             this.txtConsoleOutput.Name = "txtConsoleOutput";
@@ -104,6 +105,19 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(194, 286);
             this.panel1.TabIndex = 3;
+            // 
+            // lblTestImage2
+            // 
+            this.lblTestImage2.AutoSize = true;
+            this.lblTestImage2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblTestImage2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTestImage2.Location = new System.Drawing.Point(9, 43);
+            this.lblTestImage2.Name = "lblTestImage2";
+            this.lblTestImage2.Size = new System.Drawing.Size(103, 17);
+            this.lblTestImage2.TabIndex = 4;
+            this.lblTestImage2.Text = "Изображение 2";
+            this.lblTestImage2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTestImage2.Click += new System.EventHandler(this.lblTestImage2_Click);
             // 
             // lblTestImage1
             // 
@@ -228,19 +242,6 @@
             this.btnSaveFile.Text = "Сохранить";
             this.btnSaveFile.UseVisualStyleBackColor = false;
             this.btnSaveFile.Click += new System.EventHandler(this.btnSaveFile_Click);
-            // 
-            // lblTestImage2
-            // 
-            this.lblTestImage2.AutoSize = true;
-            this.lblTestImage2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblTestImage2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTestImage2.Location = new System.Drawing.Point(9, 43);
-            this.lblTestImage2.Name = "lblTestImage2";
-            this.lblTestImage2.Size = new System.Drawing.Size(103, 17);
-            this.lblTestImage2.TabIndex = 4;
-            this.lblTestImage2.Text = "Изображение 2";
-            this.lblTestImage2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblTestImage2.Click += new System.EventHandler(this.lblTestImage2_Click);
             // 
             // MainForm
             // 
