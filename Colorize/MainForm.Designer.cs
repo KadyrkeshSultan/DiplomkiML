@@ -52,8 +52,8 @@
             // gridMain
             // 
             this.gridMain.ColumnCount = 2;
-            this.gridMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.gridMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+            this.gridMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.gridMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85F));
             this.gridMain.Controls.Add(this.lblHeaderText, 0, 0);
             this.gridMain.Controls.Add(this.txtConsoleOutput, 1, 2);
             this.gridMain.Controls.Add(this.panel1, 0, 1);
