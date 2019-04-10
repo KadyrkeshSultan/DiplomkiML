@@ -40,7 +40,9 @@ namespace Colorize
             _bw.RunWorkerCompleted += BwRunWorkerCompleted;
 
             this.pctBoxStart.SizeMode = PictureBoxSizeMode.StretchImage;
+            this.pctBoxStart.BorderStyle = BorderStyle.FixedSingle;
             this.pctBoxEnd.SizeMode = PictureBoxSizeMode.StretchImage;
+            this.pctBoxEnd.BorderStyle = BorderStyle.FixedSingle;
         }
 
         private void btnFileChoose_Click(object sender, EventArgs e)
