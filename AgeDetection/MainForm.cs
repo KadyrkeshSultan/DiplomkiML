@@ -1,10 +1,13 @@
 ﻿using Algorithmia;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace AgeDetection
@@ -19,14 +22,16 @@ namespace AgeDetection
         private readonly BackgroundWorker _bw = new BackgroundWorker();
         private readonly Client _client;
         private Image _resultImage;
-        private string[] _testImages = { "https://photos.gurushots.com/unsafe/0x500/4b4aade50f485120cd49672ff573f93a/3_a84d3d8b7f7e2639c3cd4aca5fe59b19.jpg", "https://avatars.mds.yandex.net/get-pdb/998741/22b0ebf3-44fe-45d4-8472-a7389d105905/s1200?webp=false" };
+        private string[] _testImages = { "https://i.ibb.co/ssQ15CQ/image.jpg", "https://i.ibb.co/cr2gp4n/1.jpg" };
         private bool _flagTest = false;
+        private List<AgeResult> _ageResults;
 
         public MainForm()
         {
             InitializeComponent();
             string key = ConfigurationManager.AppSettings["algoKey"];
             _client = new Client(key);
+            _ageResults = new List<AgeResult>();
 
             _openFileDialog = new OpenFileDialog();
             _openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
@@ -61,6 +66,7 @@ namespace AgeDetection
         private void BwRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             Logging("Обработка изображения завершена");
+            
             _progressForm.Close();
         }
 
@@ -70,11 +76,7 @@ namespace AgeDetection
             {
                 if (_flagTest)
                 {
-                    using (var imageFile = GetAlgoResult(_filePath))
-                    {
-                        _resultImage = Image.FromStream(imageFile);
-                        this.pctBoxEnd.Image = _resultImage;
-                    }
+                    _ageResults.AddRange(GetAlgoResult(_filePath));
                     return;
                 }
                 string dirPath = "data://.my/images/";
@@ -91,11 +93,7 @@ namespace AgeDetection
                     var dataFile = destination.put(File.OpenRead(_filePath));
                 }
 
-                using (var imageFile = GetAlgoResult(dirPath + fileName))
-                {
-                    _resultImage = Image.FromStream(imageFile);
-                    this.pctBoxEnd.Image = _resultImage;
-                }
+                _ageResults.AddRange(GetAlgoResult(dirPath + fileName));
             }
             catch (Exception exp)
             {
@@ -103,17 +101,18 @@ namespace AgeDetection
             }
         }
 
-        private FileStream GetAlgoResult(string filePath)
+        private AgeResult[] GetAlgoResult(string filePath)
         {
-            var algo = _client.algo("deeplearning/ColorfulImageColorization/1.1.13");
+            var algo = _client.algo("deeplearning/AgeClassification/2.0.0");
             var input = "{ " + "\"image\" :\"" + filePath + "\"}";
 
             algo.setOptions(300);
 
             var response = algo.pipeJson<object>(input);
             JObject res = (JObject)response.result;
-            string output = (string)res["output"];
-            return _client.file(output).getFile();
+            var result = ((JArray)res["results"]);
+
+            return result.Select(f => f.ToObject<AgeResult>()).ToArray();
         }
 
         private void btnAlgoStart_Click(object sender, EventArgs e)

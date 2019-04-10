@@ -40,8 +40,8 @@
             this.btnFileChoose = new System.Windows.Forms.Button();
             this.btnAlgoStart = new System.Windows.Forms.Button();
             this.pctBoxStart = new System.Windows.Forms.PictureBox();
-            this.pctBoxEnd = new System.Windows.Forms.PictureBox();
             this.btnSaveFile = new System.Windows.Forms.Button();
+            this.pctBoxEnd = new System.Windows.Forms.PictureBox();
             this.gridMain.SuspendLayout();
             this.panel1.SuspendLayout();
             this.gridAlgorithm.SuspendLayout();
@@ -52,8 +52,8 @@
             // gridMain
             // 
             this.gridMain.ColumnCount = 2;
-            this.gridMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.gridMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+            this.gridMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.gridMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85F));
             this.gridMain.Controls.Add(this.lblHeaderText, 0, 0);
             this.gridMain.Controls.Add(this.txtConsoleOutput, 1, 2);
             this.gridMain.Controls.Add(this.panel1, 0, 1);
@@ -72,7 +72,7 @@
             // lblHeaderText
             // 
             this.lblHeaderText.AutoSize = true;
-            this.lblHeaderText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(178)))), ((int)(((byte)(148)))));
+            this.lblHeaderText.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.gridMain.SetColumnSpan(this.lblHeaderText, 2);
             this.lblHeaderText.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblHeaderText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -81,7 +81,7 @@
             this.lblHeaderText.Name = "lblHeaderText";
             this.lblHeaderText.Size = new System.Drawing.Size(794, 80);
             this.lblHeaderText.TabIndex = 0;
-            this.lblHeaderText.Text = "Колоризация монохромного изображения";
+            this.lblHeaderText.Text = "Классификация возрастного диапазона по фотографии";
             this.lblHeaderText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtConsoleOutput
@@ -89,10 +89,10 @@
             this.txtConsoleOutput.BackColor = System.Drawing.Color.LightGray;
             this.txtConsoleOutput.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtConsoleOutput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtConsoleOutput.Location = new System.Drawing.Point(203, 375);
+            this.txtConsoleOutput.Location = new System.Drawing.Point(123, 375);
             this.txtConsoleOutput.Multiline = true;
             this.txtConsoleOutput.Name = "txtConsoleOutput";
-            this.txtConsoleOutput.Size = new System.Drawing.Size(594, 71);
+            this.txtConsoleOutput.Size = new System.Drawing.Size(674, 71);
             this.txtConsoleOutput.TabIndex = 1;
             // 
             // panel1
@@ -103,7 +103,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 83);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(194, 286);
+            this.panel1.Size = new System.Drawing.Size(114, 286);
             this.panel1.TabIndex = 3;
             // 
             // lblTestImage2
@@ -145,8 +145,8 @@
             // 
             // gridAlgorithm
             // 
-            this.gridAlgorithm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.gridAlgorithm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridAlgorithm.BackColor = System.Drawing.Color.White;
             this.gridAlgorithm.ColumnCount = 3;
@@ -159,13 +159,13 @@
             this.gridAlgorithm.Controls.Add(this.pctBoxStart, 0, 2);
             this.gridAlgorithm.Controls.Add(this.pctBoxEnd, 2, 2);
             this.gridAlgorithm.Controls.Add(this.btnSaveFile, 2, 1);
-            this.gridAlgorithm.Location = new System.Drawing.Point(203, 83);
+            this.gridAlgorithm.Location = new System.Drawing.Point(123, 83);
             this.gridAlgorithm.Name = "gridAlgorithm";
             this.gridAlgorithm.RowCount = 3;
             this.gridAlgorithm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.gridAlgorithm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.gridAlgorithm.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.gridAlgorithm.Size = new System.Drawing.Size(594, 286);
+            this.gridAlgorithm.Size = new System.Drawing.Size(674, 286);
             this.gridAlgorithm.TabIndex = 4;
             // 
             // lblAlgoDesc
@@ -176,7 +176,7 @@
             this.lblAlgoDesc.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblAlgoDesc.Location = new System.Drawing.Point(3, 0);
             this.lblAlgoDesc.Name = "lblAlgoDesc";
-            this.lblAlgoDesc.Size = new System.Drawing.Size(588, 40);
+            this.lblAlgoDesc.Size = new System.Drawing.Size(668, 40);
             this.lblAlgoDesc.TabIndex = 0;
             this.lblAlgoDesc.Text = "Выберите изображение и нажмите \"Обработать\". Чем больше изображение, тем дольше о" +
     "бработка изображения.";
@@ -184,10 +184,10 @@
             // btnFileChoose
             // 
             this.btnFileChoose.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnFileChoose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
+            this.btnFileChoose.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnFileChoose.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnFileChoose.ForeColor = System.Drawing.Color.White;
-            this.btnFileChoose.Location = new System.Drawing.Point(35, 43);
+            this.btnFileChoose.ForeColor = System.Drawing.Color.Black;
+            this.btnFileChoose.Location = new System.Drawing.Point(52, 43);
             this.btnFileChoose.Name = "btnFileChoose";
             this.btnFileChoose.Size = new System.Drawing.Size(179, 34);
             this.btnFileChoose.TabIndex = 1;
@@ -197,15 +197,15 @@
             // 
             // btnAlgoStart
             // 
-            this.btnAlgoStart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.btnAlgoStart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAlgoStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
+            this.btnAlgoStart.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnAlgoStart.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAlgoStart.ForeColor = System.Drawing.Color.White;
-            this.btnAlgoStart.Location = new System.Drawing.Point(252, 43);
+            this.btnAlgoStart.ForeColor = System.Drawing.Color.Black;
+            this.btnAlgoStart.Location = new System.Drawing.Point(286, 43);
             this.btnAlgoStart.Name = "btnAlgoStart";
-            this.btnAlgoStart.Size = new System.Drawing.Size(77, 34);
+            this.btnAlgoStart.Size = new System.Drawing.Size(88, 34);
             this.btnAlgoStart.TabIndex = 2;
             this.btnAlgoStart.Text = "Обработать";
             this.btnAlgoStart.UseVisualStyleBackColor = false;
@@ -216,32 +216,32 @@
             this.pctBoxStart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pctBoxStart.Location = new System.Drawing.Point(3, 83);
             this.pctBoxStart.Name = "pctBoxStart";
-            this.pctBoxStart.Size = new System.Drawing.Size(243, 200);
+            this.pctBoxStart.Size = new System.Drawing.Size(277, 200);
             this.pctBoxStart.TabIndex = 3;
             this.pctBoxStart.TabStop = false;
-            // 
-            // pctBoxEnd
-            // 
-            this.pctBoxEnd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pctBoxEnd.Location = new System.Drawing.Point(335, 83);
-            this.pctBoxEnd.Name = "pctBoxEnd";
-            this.pctBoxEnd.Size = new System.Drawing.Size(256, 200);
-            this.pctBoxEnd.TabIndex = 4;
-            this.pctBoxEnd.TabStop = false;
             // 
             // btnSaveFile
             // 
             this.btnSaveFile.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSaveFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
+            this.btnSaveFile.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnSaveFile.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnSaveFile.ForeColor = System.Drawing.Color.White;
-            this.btnSaveFile.Location = new System.Drawing.Point(385, 43);
+            this.btnSaveFile.ForeColor = System.Drawing.Color.Black;
+            this.btnSaveFile.Location = new System.Drawing.Point(447, 43);
             this.btnSaveFile.Name = "btnSaveFile";
             this.btnSaveFile.Size = new System.Drawing.Size(156, 34);
             this.btnSaveFile.TabIndex = 5;
             this.btnSaveFile.Text = "Сохранить";
             this.btnSaveFile.UseVisualStyleBackColor = false;
             this.btnSaveFile.Click += new System.EventHandler(this.btnSaveFile_Click);
+            // 
+            // pctBoxEnd
+            // 
+            this.pctBoxEnd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pctBoxEnd.Location = new System.Drawing.Point(380, 83);
+            this.pctBoxEnd.Name = "pctBoxEnd";
+            this.pctBoxEnd.Size = new System.Drawing.Size(291, 200);
+            this.pctBoxEnd.TabIndex = 4;
+            this.pctBoxEnd.TabStop = false;
             // 
             // MainForm
             // 
@@ -250,7 +250,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.gridMain);
             this.Name = "MainForm";
-            this.Text = "Автоматическая колоризация монохромного фото изображения";
+            this.Text = "Классификация возрастного диапазона по фотографии человека";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.gridMain.ResumeLayout(false);
             this.gridMain.PerformLayout();
@@ -277,9 +277,9 @@
         private System.Windows.Forms.Button btnFileChoose;
         private System.Windows.Forms.Button btnAlgoStart;
         private System.Windows.Forms.PictureBox pctBoxStart;
-        private System.Windows.Forms.PictureBox pctBoxEnd;
         private System.Windows.Forms.Button btnSaveFile;
         private System.Windows.Forms.Label lblTestImage2;
+        private System.Windows.Forms.PictureBox pctBoxEnd;
     }
 }
 
