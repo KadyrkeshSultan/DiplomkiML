@@ -40,13 +40,11 @@
             this.btnFileChoose = new System.Windows.Forms.Button();
             this.btnAlgoStart = new System.Windows.Forms.Button();
             this.pctBoxStart = new System.Windows.Forms.PictureBox();
-            this.btnSaveFile = new System.Windows.Forms.Button();
-            this.pctBoxEnd = new System.Windows.Forms.PictureBox();
+            this.gridListAgeResults = new System.Windows.Forms.TableLayoutPanel();
             this.gridMain.SuspendLayout();
             this.panel1.SuspendLayout();
             this.gridAlgorithm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctBoxStart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctBoxEnd)).BeginInit();
             this.SuspendLayout();
             // 
             // gridMain
@@ -157,8 +155,7 @@
             this.gridAlgorithm.Controls.Add(this.btnFileChoose, 0, 1);
             this.gridAlgorithm.Controls.Add(this.btnAlgoStart, 1, 1);
             this.gridAlgorithm.Controls.Add(this.pctBoxStart, 0, 2);
-            this.gridAlgorithm.Controls.Add(this.pctBoxEnd, 2, 2);
-            this.gridAlgorithm.Controls.Add(this.btnSaveFile, 2, 1);
+            this.gridAlgorithm.Controls.Add(this.gridListAgeResults, 2, 2);
             this.gridAlgorithm.Location = new System.Drawing.Point(123, 83);
             this.gridAlgorithm.Name = "gridAlgorithm";
             this.gridAlgorithm.RowCount = 3;
@@ -220,28 +217,17 @@
             this.pctBoxStart.TabIndex = 3;
             this.pctBoxStart.TabStop = false;
             // 
-            // btnSaveFile
+            // gridListAgeResults
             // 
-            this.btnSaveFile.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSaveFile.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSaveFile.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnSaveFile.ForeColor = System.Drawing.Color.Black;
-            this.btnSaveFile.Location = new System.Drawing.Point(447, 43);
-            this.btnSaveFile.Name = "btnSaveFile";
-            this.btnSaveFile.Size = new System.Drawing.Size(156, 34);
-            this.btnSaveFile.TabIndex = 5;
-            this.btnSaveFile.Text = "Сохранить";
-            this.btnSaveFile.UseVisualStyleBackColor = false;
-            this.btnSaveFile.Click += new System.EventHandler(this.btnSaveFile_Click);
-            // 
-            // pctBoxEnd
-            // 
-            this.pctBoxEnd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pctBoxEnd.Location = new System.Drawing.Point(380, 83);
-            this.pctBoxEnd.Name = "pctBoxEnd";
-            this.pctBoxEnd.Size = new System.Drawing.Size(291, 200);
-            this.pctBoxEnd.TabIndex = 4;
-            this.pctBoxEnd.TabStop = false;
+            this.gridListAgeResults.ColumnCount = 1;
+            this.gridListAgeResults.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.gridListAgeResults.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridListAgeResults.Location = new System.Drawing.Point(380, 83);
+            this.gridListAgeResults.Name = "gridListAgeResults";
+            this.gridListAgeResults.RowCount = 1;
+            this.gridListAgeResults.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.gridListAgeResults.Size = new System.Drawing.Size(291, 200);
+            this.gridListAgeResults.TabIndex = 4;
             // 
             // MainForm
             // 
@@ -259,7 +245,6 @@
             this.gridAlgorithm.ResumeLayout(false);
             this.gridAlgorithm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctBoxStart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctBoxEnd)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -277,9 +262,8 @@
         private System.Windows.Forms.Button btnFileChoose;
         private System.Windows.Forms.Button btnAlgoStart;
         private System.Windows.Forms.PictureBox pctBoxStart;
-        private System.Windows.Forms.Button btnSaveFile;
         private System.Windows.Forms.Label lblTestImage2;
-        private System.Windows.Forms.PictureBox pctBoxEnd;
+        private System.Windows.Forms.TableLayoutPanel gridListAgeResults;
     }
 }
 

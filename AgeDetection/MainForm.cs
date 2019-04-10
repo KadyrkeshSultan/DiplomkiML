@@ -45,7 +45,8 @@ namespace AgeDetection
             _bw.RunWorkerCompleted += BwRunWorkerCompleted;
 
             this.pctBoxStart.SizeMode = PictureBoxSizeMode.StretchImage;
-            this.pctBoxEnd.SizeMode = PictureBoxSizeMode.StretchImage;
+            this.pctBoxStart.BorderStyle = BorderStyle.FixedSingle;
+            this.gridListAgeResults.CellBorderStyle = TableLayoutPanelCellBorderStyle.InsetDouble;
         }
 
         private void btnFileChoose_Click(object sender, EventArgs e)
@@ -66,7 +67,10 @@ namespace AgeDetection
         private void BwRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             Logging("Обработка изображения завершена");
-            
+            if(_ageResults.Count > 0)
+            {
+                GenTableLayoutPanel();
+            }
             _progressForm.Close();
         }
 
@@ -76,6 +80,7 @@ namespace AgeDetection
             {
                 if (_flagTest)
                 {
+                    _ageResults.Clear();
                     _ageResults.AddRange(GetAlgoResult(_filePath));
                     return;
                 }
@@ -93,6 +98,7 @@ namespace AgeDetection
                     var dataFile = destination.put(File.OpenRead(_filePath));
                 }
 
+                _ageResults.Clear();
                 _ageResults.AddRange(GetAlgoResult(dirPath + fileName));
             }
             catch (Exception exp)
@@ -140,36 +146,7 @@ namespace AgeDetection
                 return ms.ToArray();
             }
         }
-
-        private void btnSaveFile_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(_fileName))
-            {
-                _saveFileDialog.FileName = _fileName;
-            }
-            if (_saveFileDialog.ShowDialog() == DialogResult.Cancel)
-            {
-                return;
-            }
-
-            if (_resultImage == null)
-            {
-                return;
-            }
-
-            try
-            {
-                string fileName = _saveFileDialog.FileName;
-                System.IO.File.WriteAllBytes(fileName, ImageToByteArray(_resultImage));
-                Logging($"Изображение сохранено по пути: {fileName}");
-            }
-            catch (Exception err)
-            {
-                Logging($"Ошибка: {err.Message}");
-                MessageBox.Show(err.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
+        
         private void lblTestImage1_Click(object sender, EventArgs e)
         {
             _filePath = _testImages[0];
@@ -189,6 +166,60 @@ namespace AgeDetection
         private void Logging(string message)
         {
             this.txtConsoleOutput.AppendText($"[{DateTime.Now.ToString()}]: {message}\r\n");
+        }
+
+        private void GenTableLayoutPanel()
+        {
+            this.gridListAgeResults.Controls.Clear();
+            var gridList = new TableLayoutPanel();
+            gridList.ColumnCount = 1;
+            gridList.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            gridList.Dock = DockStyle.Fill;
+            gridList.Name = "gridList";
+            gridList.Location = new System.Drawing.Point(0, 0);
+            gridList.RowCount = _ageResults.Count + 1;
+
+            for(int i = 0; i< gridList.RowCount - 1; i++)
+            {
+                gridList.RowStyles.Add(new RowStyle(SizeType.Absolute, 80F));
+                gridList.Controls.Add(GetGridAgeResult(string.Empty,_ageResults[i]), 0, i);
+            }
+
+            gridList.RowStyles.Add(new RowStyle(SizeType.AutoSize, 80F));
+            gridList.Controls.Add(new Label() { Dock = DockStyle.Fill }, 0, gridList.RowCount);
+
+            this.gridListAgeResults.Controls.Add(gridList, 0, 0);
+        }
+
+        private TableLayoutPanel GetGridAgeResult(string imgPath, AgeResult ageResult)
+        {
+            var grid = new TableLayoutPanel();
+
+            grid.ColumnCount = 2;
+            grid.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            grid.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
+            grid.Dock = DockStyle.Fill;
+            grid.Name = "gridGen";
+            grid.RowCount = 2;
+            grid.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            grid.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            grid.CellBorderStyle = TableLayoutPanelCellBorderStyle.Outset;
+
+            var pct = new PictureBox();
+            pct.SizeMode = PictureBoxSizeMode.StretchImage;
+            pct.Dock = DockStyle.Fill;
+            pct.Load("https://i.ibb.co/mNnH91W/240px-Vorschriftszeichen-1-svg.png");
+
+            var label1 = new Label() {Dock= DockStyle.Fill };
+            var label2 = new Label() { Dock = DockStyle.Fill };
+            var age = ageResult.age.OrderByDescending(f => f.confidence).FirstOrDefault();
+            label1.Text = $"Диапазон Возраста: {age.ageRange.min}-{age.ageRange.max}.";
+            label2.Text = $"Точность: {age.confidence}.";
+            grid.Controls.Add(label1, 1, 0);
+            grid.Controls.Add(label2, 1, 1);
+            grid.Controls.Add(pct, 0, 0);
+
+            return grid;
         }
     }
 }
