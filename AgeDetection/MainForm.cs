@@ -22,7 +22,7 @@ namespace AgeDetection
         private readonly BackgroundWorker _bw = new BackgroundWorker();
         private readonly Client _client;
         private Image _resultImage;
-        private string[] _testImages = { "https://i.ibb.co/ssQ15CQ/image.jpg", "https://i.ibb.co/cr2gp4n/1.jpg" };
+        private string[] _testImages = { "https://avatars.mds.yandex.net/get-pdb/805781/0e77a054-59ad-4e3c-9a94-bc87fb3de3c9/s1200", "https://i.ibb.co/myxQY3j/1615-children.jpg" };
         private bool _flagTest = false;
         private List<AgeResult> _ageResults;
 
@@ -218,6 +218,7 @@ namespace AgeDetection
             grid.Controls.Add(label1, 1, 0);
             grid.Controls.Add(label2, 1, 1);
             grid.Controls.Add(pct, 0, 0);
+            grid.SetRowSpan(pct, 2);
 
             return grid;
         }
